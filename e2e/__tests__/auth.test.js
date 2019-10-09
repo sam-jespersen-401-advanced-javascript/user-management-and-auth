@@ -1,7 +1,7 @@
 const request = require('../request');
 const { dropCollection } = require('../db');
 const jwt = require('jsonwebtoken');
-const { signupUser } = require('../data-helpers');
+const { signupAdmin } = require('../data-helpers');
 
 describe('Auth API', () => {
 
@@ -15,7 +15,7 @@ describe('Auth API', () => {
   let user = null;
 
   beforeEach(() => {
-    return signupUser(testUser)
+    return signupAdmin(testUser)
       .then(newUser => user = newUser);
   });
 

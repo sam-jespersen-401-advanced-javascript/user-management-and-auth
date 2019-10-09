@@ -1,19 +1,14 @@
 const request = require('../request');
 const { dropCollection } = require('../db');
-const { signupUser } = require('../data-helpers');
+const { signupAdmin } = require('../data-helpers');
 
 describe('me API', () => {
   beforeEach(() => dropCollection('users'));
 
-  const testUser = {
-    email: 'me@me.com',
-    password: 'abc'
-  };
-
   let user = null;
 
   beforeEach(() => {
-    return signupUser(testUser)
+    return signupAdmin()
       .then(newUser => user = newUser);
   });
 
@@ -84,7 +79,6 @@ describe('me API', () => {
           .expect(200);
       })
       .then(({ body }) => {
-        console.log(body);
         expect(body[0].name).toBe('English');
       });
   });

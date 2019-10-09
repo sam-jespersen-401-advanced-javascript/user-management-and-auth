@@ -1,6 +1,6 @@
 const request = require('../request');
 const db = require('../db');
-const { signupUser } = require('../data-helpers');
+const { signupAdmin } = require('../data-helpers');
 
 describe('languages api', () => {
 
@@ -18,8 +18,10 @@ describe('languages api', () => {
   let user = null;
 
   beforeEach(() => {
-    return signupUser(testUser)
-      .then(newUser => user = newUser);
+    return signupAdmin(testUser)
+      .then(newUser => {
+        user = newUser;
+      });
   });
 
   const data = {
